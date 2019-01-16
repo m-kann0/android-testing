@@ -1,8 +1,7 @@
 package com.sample.android.testing.chap02
 
-import org.hamcrest.CoreMatchers.`is`
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.After
-import org.junit.Assert.assertThat
 import org.junit.Before
 import org.junit.Ignore
 import org.junit.Test
@@ -26,30 +25,30 @@ class InputCheckerTest {
     @Test
     fun isValid_givenLessThan3_returnsFalse() {
         val actual = target.isValid("ab")
-        assertThat(actual, `is`(false))
+        assertThat(actual).isFalse()
     }
 
     @Test
     fun isValid_givenAlphabetic_returnsTrue() {
         val actual = target.isValid("abc")
-        assertThat(actual, `is`(true))
+        assertThat(actual).isTrue()
     }
 
     @Test
     fun isValid_givenNumeric_returnsTrue() {
         val actual = target.isValid("123")
-        assertThat(actual, `is`(true))
+        assertThat(actual).isTrue()
     }
     @Test
     fun isValid_givenAlphaNumeric_returnsTrue() {
         val actual = target.isValid("abc123")
-        assertThat(actual, `is`(true))
+        assertThat(actual).isTrue()
     }
 
     @Test
     fun isValid_givenInvalidCharacter_returnsFalse() {
         val actual = target.isValid("abc@123")
-        assertThat(actual, `is`(false))
+        assertThat(actual).isFalse()
     }
 
     @Test(expected = IllegalArgumentException::class)
